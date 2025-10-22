@@ -1,6 +1,51 @@
-# Getting Started with Create React App
+# BitrSweet Coffee Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern coffee shop web application built with React and Node.js, featuring a menu system, shopping cart, and order management.
+
+## Features
+
+- **Menu Display**: Browse coffee drinks, cold brews, and pastries
+- **Shopping Cart**: Add items to cart and manage quantities
+- **Order Management**: Place orders and track order status
+- **Responsive Design**: Works on desktop and mobile devices
+- **SQLite Database**: No external database dependencies required
+
+## Quick Start
+
+### Option 1: Use the Start Script (Recommended)
+1. Double-click `start-app.bat` to start both backend and frontend servers
+2. Backend will run on http://localhost:5000
+3. Frontend will run on http://localhost:3000
+
+### Option 2: Manual Start
+1. **Start Backend**:
+   ```bash
+   cd backend
+   npm install
+   node server.js
+   ```
+
+2. **Start Frontend** (in a new terminal):
+   ```bash
+   npm install
+   npm start
+   ```
+
+## Database
+
+This application uses **SQLite** for data storage, which means:
+- ✅ No MySQL/XAMPP required
+- ✅ Works locally and on Vercel deployment
+- ✅ Database file is included (`bitrsweet_coffee.db`)
+- ✅ Sample menu data is automatically loaded
+
+## Deployment
+
+The application is ready for deployment to Vercel or any Node.js hosting platform. The SQLite database will work seamlessly in production without requiring external database services.
+
+---
+
+*This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
 
 ## Available Scripts
 

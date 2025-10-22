@@ -1,9 +1,10 @@
 module.exports = {
   database: {
-    // Use SQLite for production (Vercel) and MySQL for local development
-    type: process.env.NODE_ENV === 'production' ? 'sqlite' : 'mysql',
+    // Use SQLite for both local development and production (Vercel)
+    // This ensures the app works without requiring MySQL/XAMPP
+    type: 'sqlite',
     
-    // MySQL configuration (for local development)
+    // MySQL configuration (kept for reference, not used)
     mysql: {
       host: 'localhost',
       port: 4308, // XAMPP MySQL port
@@ -20,7 +21,7 @@ module.exports = {
       }
     },
     
-    // SQLite configuration (for production)
+    // SQLite configuration (used for both local and production)
     sqlite: {
       filename: 'bitrsweet_coffee.db'
     }
