@@ -17,6 +17,23 @@
   max-width: 100%;
 }
 
+/* Hide YouTube video title on hover */
+.hero-video-container:hover .hero-video {
+  pointer-events: none;
+}
+
+.hero-video-container:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1;
+  pointer-events: auto;
+}
+
 /* Mobile Responsive Video */
 @media (max-width: 768px) {
   .hero-video-container {

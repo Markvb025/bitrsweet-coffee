@@ -1,20 +1,10 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
-import { useSidebar } from "../contexts/SidebarContext";
 import "./Home.css";
 
 const Home = () => {
-  const { isSidebarOpen } = useSidebar();
-
   return (
-    <div className={`page-layout d-flex ${!isSidebarOpen ? 'sidebar-closed' : ''}`}>
-      {/* Sidebar */}
-      <Sidebar />
-
-      {/* Main Content */}
-      <div className="flex-grow-1 d-flex flex-column">
-        <div className="container my-5 flex-grow-1">
+    <div className="page-layout">
+      <div className="container my-5">
           {/* Hero Section */}
           <div className="text-center mb-5">
             <h1 className="fw-bold display-5">Welcome to BitrSweet. Coffee</h1>
@@ -118,7 +108,6 @@ const Home = () => {
             <button className="btn btn-coffee px-4">Find Our Café</button>
           </section>
         </div>
-      </div>
     </div>
   );
 };

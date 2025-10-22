@@ -16,7 +16,7 @@ const Footer = () => {
 
         <div className="footer-section">
           <h5>Contact Us</h5>
-          <p><FaMapMarkerAlt /> 123 Brew Street, Manila, Philippines</p>
+          <p><FaMapMarkerAlt /> Cabuyao, Laguna, Philippines</p>
           <p><FaPhoneAlt /> +63 912 345 6789</p>
           <p><FaEnvelope /> hello@coffee-delight.com</p>
         </div>

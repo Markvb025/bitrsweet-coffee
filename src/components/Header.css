@@ -1,39 +1,126 @@
-/* Cart Badge Styles */
+/* Enhanced Header Styles */
+.navbar {
+  background: linear-gradient(135deg, #1d1c1a 0%, #2c2a26 100%) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  border-bottom: 3px solid #b78f6c;
+}
+
+.navbar-brand {
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  color: #b78f6c !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #d1ab85 !important;
+  transform: scale(1.05);
+}
+
+.nav-link {
+  font-weight: 500 !important;
+  color: #fefefe !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0 0.25rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.nav-link:hover {
+  color: #b78f6c !important;
+  background-color: rgba(183, 143, 108, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  color: #b78f6c !important;
+  background-color: rgba(183, 143, 108, 0.2);
+  font-weight: 600 !important;
+}
+
+/* Enhanced Cart Badge Styles */
 .cart-badge {
   font-size: 0.75rem;
-  min-width: 18px;
-  height: 18px;
-  line-height: 1;
-  padding: 0.25em 0.4em;
-  z-index: 10;
+  min-width: 20px;
+  height: 20px;
+  line-height: 1.2;
+  padding: 0.3em 0.5em;
+  z-index: 1000;
   white-space: nowrap;
+  background: linear-gradient(135deg, #dc3545, #c82333) !important;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* Ensure the nav-link has enough space for the badge */
 .nav-link.position-relative {
-  padding-right: 20px !important;
+  padding-right: 30px !important;
   overflow: visible;
+  margin-right: 10px;
 }
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .cart-badge {
     font-size: 0.7rem;
-    min-width: 16px;
-    height: 16px;
-    padding: 0.2em 0.3em;
+    min-width: 18px;
+    height: 18px;
+    padding: 0.25em 0.4em;
   }
   
   .nav-link.position-relative {
-    padding-right: 18px !important;
+    padding-right: 25px !important;
+    margin-right: 5px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.3rem !important;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 0.75rem !important;
+    margin: 0.1rem 0;
   }
 }
 
 /* Ensure navbar doesn't clip the badge */
 .navbar-nav {
   overflow: visible;
+  align-items: center;
 }
 
 .nav-item {
   overflow: visible;
+}
+
+/* Mobile menu toggle button */
+.navbar-toggler {
+  border: 2px solid #b78f6c;
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  background-color: rgba(183, 143, 108, 0.1);
+  border-color: #d1ab85;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(183, 143, 108, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28183, 143, 108, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
