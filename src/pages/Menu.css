@@ -1,0 +1,66 @@
+/* Menu Item Card Styles */
+.menu-item-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-img-top {
+  transition: transform 0.3s ease;
+}
+
+/* Price Text Styling */
+.price-text {
+  color: #b78f6c;
+  font-size: 1.2rem;
+}
+
+/* Button Styles */
+.btn-coffee {
+  background-color: #b78f6c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-coffee:hover {
+  background-color: #9b7652;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(183, 143, 108, 0.3);
+}
+
+.btn-coffee:active {
+  transform: translateY(0);
+}
+
+/* Card Body Improvements */
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu-item-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .btn-coffee {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+}
+

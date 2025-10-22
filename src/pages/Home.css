@@ -1,0 +1,105 @@
+/* Hero Video Styles */
+.hero-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  padding: 0 15px;
+}
+
+.hero-video {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+/* Mobile Responsive Video */
+@media (max-width: 768px) {
+  .hero-video-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 10px;
+  }
+  
+  .hero-video {
+    height: 250px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-video {
+    height: 200px;
+    width: 100%;
+  }
+  
+  .hero-video-container {
+    margin: 0;
+    padding: 0 5px;
+  }
+}
+
+/* Button Styles */
+.btn-coffee {
+  background-color: #b78f6c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-coffee:hover {
+  background-color: #9b7652;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(183, 143, 108, 0.3);
+}
+
+/* Card Hover Effects */
+.card {
+  transition: all 0.3s ease;
+  max-width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Responsive Layout */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 100%;
+  }
+  
+  .display-5 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .display-5 {
+    font-size: 1.8rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+}
+

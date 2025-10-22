@@ -1,38 +1,294 @@
-.App {
+/* Global Layout Fixes */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Prevent horizontal overflow for all elements */
+* {
+  max-width: 100%;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: #fefefe;
+  color: #1d1c1a;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Container and Layout Fixes */
+.container {
+  max-width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 0;
+  margin-right: auto;
+  overflow-x: hidden;
+}
+
+/* Page Layout Styles */
+.page-layout {
+  transition: all 0.3s ease;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page-layout.sidebar-closed .flex-grow-1 {
+  margin-left: 0;
+}
+
+@media (min-width: 769px) {
+  .page-layout {
+    justify-content: flex-start;
+  }
+  
+  .page-layout:not(.sidebar-closed) .flex-grow-1 {
+    margin-left: 20px;
+  }
+  
+  /* Move content to the left in desktop view */
+  .container {
+    margin-left: 0;
+    padding-left: 20px;
+  }
+  
+  .page-layout .flex-grow-1 {
+    padding-left: 0;
+  }
+}
+
+/* Navbar */
+.navbar {
+  background-color: #1d1c1a !important;
+  width: 100%;
+  overflow: visible;
+}
+
+.navbar-nav {
+  overflow: visible;
+}
+
+.nav-item {
+  overflow: visible;
+}
+
+.navbar-brand {
+  color: #b78f6c !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  color: #fefefe !important;
+  margin: 0 10px;
+}
+
+.nav-link:hover {
+  color: #b78f6c !important;
+}
+
+/* Footer */
+.footer {
+  background-color: #1d1c1a;
+  color: #fefefe;
+  padding: 40px 0;
   text-align: center;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Cards */
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-width: 100%;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.card img {
+  border-radius: 10px 10px 0 0;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Buttons */
+.btn-coffee {
+  background-color: #b78f6c;
+  color: #fff;
+  border: none;
+}
+
+.btn-coffee:hover {
+  background-color: #a07a5c;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Adjust navbar for mobile */
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+  
+  .nav-link {
+    margin: 5px 0;
+    padding: 8px 15px;
+  }
+  
+  /* Adjust main content layout */
+  .d-flex {
+    flex-direction: column;
+  }
+  
+  .flex-grow-1 {
+    margin-left: 0 !important;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Adjust container padding */
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Adjust card layouts */
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+    overflow-x: hidden;
+  }
+  
+  .col-md-4,
+  .col-md-6,
+  .col-lg-4 {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Adjust headings for mobile */
+  .display-5 {
+    font-size: 2rem;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+  }
+  
+  /* Adjust buttons */
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  
+  /* Adjust footer */
+  .footer {
+    padding: 30px 0;
+  }
+  
+  /* Ensure all images and media are responsive */
+  img, video, iframe {
+    max-width: 100% !important;
+    height: auto !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .navbar-brand {
+    font-size: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .display-5 {
+    font-size: 1.8rem;
+  }
+  
+  .lead {
+    font-size: 1rem;
+  }
+  
+  .btn {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+  
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+    width: calc(100% + 10px);
+  }
+  
+  .col-md-4,
+  .col-md-6,
+  .col-lg-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/* Sidebar responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar-container.sidebar-open {
+    transform: translateX(0);
+  }
+  
+  /* Add overlay for mobile sidebar */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: none;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
   }
 }

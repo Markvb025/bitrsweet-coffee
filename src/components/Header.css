@@ -1,0 +1,39 @@
+/* Cart Badge Styles */
+.cart-badge {
+  font-size: 0.75rem;
+  min-width: 18px;
+  height: 18px;
+  line-height: 1;
+  padding: 0.25em 0.4em;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+/* Ensure the nav-link has enough space for the badge */
+.nav-link.position-relative {
+  padding-right: 20px !important;
+  overflow: visible;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .cart-badge {
+    font-size: 0.7rem;
+    min-width: 16px;
+    height: 16px;
+    padding: 0.2em 0.3em;
+  }
+  
+  .nav-link.position-relative {
+    padding-right: 18px !important;
+  }
+}
+
+/* Ensure navbar doesn't clip the badge */
+.navbar-nav {
+  overflow: visible;
+}
+
+.nav-item {
+  overflow: visible;
+}

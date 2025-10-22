@@ -1,0 +1,71 @@
+.about-page {
+  display: flex;
+  background-color: #fffdf8;
+  font-family: "Poppins", sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.about-content {
+  flex: 1;
+  padding: 2rem 4rem;
+  color: #3a2e2e;
+}
+
+.about-hero h1 {
+  color: #4e3b2a;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-hero p {
+  color: #5f4c3b;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.about-mission h2,
+.about-contact h2 {
+  color: #4e3b2a;
+  border-bottom: 2px solid #d2b48c;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+.about-mission ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-mission li {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.about-contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+.about-contact input,
+.about-contact textarea {
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.about-contact button {
+  background-color: #a77444;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.about-contact button:hover {
+  background-color: #8f5d36;
+}

@@ -1,0 +1,30 @@
+.cart-item {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.empty-cart-img {
+  width: 120px;
+  opacity: 0.8;
+}
+
+.btn-coffee {
+  background-color: #b78f6c;
+  color: white;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.btn-coffee:hover {
+  background-color: #9b7652;
+  color: white;
+}
+
+.cart-summary {
+  border-radius: 12px;
+  background: #fff8f2;
+}
