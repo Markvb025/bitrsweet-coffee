@@ -5,6 +5,7 @@ const path = require('path');
 const dbPath = path.join(__dirname, 'bitrsweet_coffee.db');
 const db = new sqlite3.Database(dbPath);
 
+
 // Test database connection
 const testConnection = () => {
   return new Promise((resolve, reject) => {
@@ -118,15 +119,44 @@ const insertSampleData = async () => {
 const promiseDb = {
   execute: (sql, params = []) => {
     return new Promise((resolve, reject) => {
+      // Convert MySQL-specific SQL to SQLite-compatible SQL
+      let sqliteSql = sql;
+      
+      // Handle CONCAT first
+      sqliteSql = sqliteSql.replace(/CONCAT\(([^)]+)\)/gi, (match, content) => {
+        const parts = content.split(',').map(part => part.trim());
+        return parts.join(' || ');
+      });
+      
+      // Handle GROUP_CONCAT with SEPARATOR (multiline pattern)
+      sqliteSql = sqliteSql.replace(/GROUP_CONCAT\(\s*([\s\S]*?)\s+SEPARATOR\s+'([^']+)'\s*\)/gi, (match, content, separator) => {
+        return `group_concat(${content.trim()}, '${separator}')`;
+      });
+      
+      // Handle remaining GROUP_CONCAT without SEPARATOR
+      sqliteSql = sqliteSql.replace(/GROUP_CONCAT\(([^)]+)\)/gi, (match, content) => {
+        return `group_concat(${content.trim()})`;
+      });
+
       if (params.length === 0) {
-        db.all(sql, (err, rows) => {
-          if (err) reject(err);
-          else resolve([rows]);
+        db.all(sqliteSql, (err, rows) => {
+          if (err) {
+            console.error('SQLite Error:', err.message);
+            console.error('SQL:', sqliteSql);
+            reject(err);
+          } else {
+            resolve([rows]);
+          }
         });
       } else {
-        db.all(sql, params, (err, rows) => {
-          if (err) reject(err);
-          else resolve([rows]);
+        db.all(sqliteSql, params, (err, rows) => {
+          if (err) {
+            console.error('SQLite Error:', err.message);
+            console.error('SQL:', sqliteSql);
+            reject(err);
+          } else {
+            resolve([rows]);
+          }
         });
       }
     });

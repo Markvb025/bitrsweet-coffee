@@ -1,7 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-const { promisePool, testConnection, initializeDatabase, insertSampleData } = require('./database');
 const config = require('./config');
+
+// Conditionally import database based on environment
+let database;
+if (config.database.type === 'sqlite') {
+  database = require('./database-sqlite');
+} else {
+  database = require('./database');
+}
+
+const { promisePool, testConnection, initializeDatabase, insertSampleData } = database;
 
 const app = express();
 const PORT = config.port;
@@ -108,19 +117,42 @@ app.post('/api/orders', async (req, res) => {
 // Get all orders
 app.get('/api/orders', async (req, res) => {
   try {
-    const [rows] = await promisePool.execute(`
-      SELECT o.*, 
-             GROUP_CONCAT(
-               CONCAT(mi.name, ' (', oi.quantity, 'x)') 
-               SEPARATOR ', '
-             ) as items
-      FROM orders o
-      LEFT JOIN order_items oi ON o.id = oi.order_id
-      LEFT JOIN menu_items mi ON oi.menu_item_id = mi.id
-      GROUP BY o.id
-      ORDER BY o.created_at DESC
-    `);
-    res.json(rows);
+    // For SQLite compatibility, we'll fetch orders and items separately
+    if (config.database.type === 'sqlite') {
+      const [orders] = await promisePool.execute(`
+        SELECT * FROM orders 
+        ORDER BY created_at DESC
+      `);
+      
+      // Get items for each order
+      for (let order of orders) {
+        const [items] = await promisePool.execute(`
+          SELECT oi.*, mi.name, mi.image_url
+          FROM order_items oi
+          JOIN menu_items mi ON oi.menu_item_id = mi.id
+          WHERE oi.order_id = ?
+        `, [order.id]);
+        
+        order.items = items.map(item => `${item.name} (${item.quantity}x)`).join(', ');
+      }
+      
+      res.json(orders);
+    } else {
+      // MySQL version with GROUP_CONCAT
+      const [rows] = await promisePool.execute(`
+        SELECT o.*, 
+               GROUP_CONCAT(
+                 CONCAT(mi.name, ' (', oi.quantity, 'x)') 
+                 SEPARATOR ', '
+               ) as items
+        FROM orders o
+        LEFT JOIN order_items oi ON o.id = oi.order_id
+        LEFT JOIN menu_items mi ON oi.menu_item_id = mi.id
+        GROUP BY o.id
+        ORDER BY o.created_at DESC
+      `);
+      res.json(rows);
+    }
   } catch (error) {
     console.error('Error fetching orders:', error);
     res.status(500).json({ error: 'Failed to fetch orders' });
@@ -215,6 +247,7 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
       console.log(`📊 API endpoints available at http://localhost:${PORT}/api`);
+      console.log(`🗄️  Using ${config.database.type.toUpperCase()} database`);
     });
   } catch (error) {
     console.error('Failed to start server:', error);
